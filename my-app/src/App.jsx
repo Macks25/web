@@ -11,6 +11,9 @@ import CounterWithoutHook from './components/hooks/CounterWithoutHook.jsx'
 import CounterWithUseState from './components/hooks/CounterWithUseState.jsx'
 import CounterWithUseEffect from './components/hooks/CounterWithUseEffect.jsx'
 import CounterWithUseRef from './components/hooks/CounterWithUseRef.jsx'
+import HooksContainer from './components/hooks/HooksContainer.jsx'
+import ThemeComponent from './components/ThemeComponent.jsx'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 
 
 
@@ -20,19 +23,17 @@ function App() {
 
     return (
     <>
-      <BrowserRouter>
-
-
-        <Navbar />
-        <CounterWithoutHook />
-        <CounterWithUseState />
-        <CounterWithUseEffect />
-        <CounterWithUseRef />
-        <Routes>
-          <Route path="/" element={<SimpleFunctionalComponent students={students} />} />
-          <Route path="/class" element={<SimpleClassComponent />} />
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<SimpleFunctionalComponent students={students} />} />
+            <Route path="/class" element={<SimpleClassComponent />} />
+            <Route path="/hooks" element={<HooksContainer />} />
+            <Route path="/theme" element={<ThemeComponent />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </>
   )
 }
